@@ -20,7 +20,7 @@ function ApplicationNavigator() {
 
   return (
     <SafeAreaProvider>
-      <NavigationContainer theme={{...navigationTheme, direction: isRTL ? "rtl" : "ltr"}}>
+      <NavigationContainer direction={isRTL ? 'rtl' : 'ltr'} theme={navigationTheme}>
         <Stack.Navigator key={variant} screenOptions={{ headerShown: false }}>
           <Stack.Screen component={LandingPage} name={Paths.LandingPage} />
           <Stack.Screen component={Login} name={Paths.Login} />
