@@ -1,12 +1,16 @@
 import 'react-native-gesture-handler';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { I18nManager } from "react-native";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { MMKV } from 'react-native-mmkv';
 
 import ApplicationNavigator from '@/navigation/Application';
 import { ThemeProvider } from '@/theme';
 import '@/translations';
+
+I18nManager.allowRTL(true);
+I18nManager.forceRTL(true);
 
 export const queryClient = new QueryClient({
   defaultOptions: {

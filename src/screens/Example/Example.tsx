@@ -4,6 +4,7 @@ import { Alert, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 import { useI18n, useUser } from '@/hooks';
 import { useTheme } from '@/theme';
+import layout from '@/theme/layout';
 
 import { AssetByVariant, IconByVariant, Skeleton } from '@/components/atoms';
 import { SafeScreen } from '@/components/templates';
@@ -15,16 +16,8 @@ function Example() {
   const { useFetchOneQuery } = useUser();
   const { toggleLanguage } = useI18n();
 
-  const {
-    backgrounds,
-    changeTheme,
-    colors,
-    components,
-    fonts,
-    gutters,
-    layout,
-    variant,
-  } = useTheme();
+  const { backgrounds, changeTheme, colors, components, fonts, gutters, variant } =
+    useTheme();
 
   const [currentId, setCurrentId] = useState(-1);
 
@@ -38,62 +31,34 @@ function Example() {
     }
   }, [fetchOneUserQuery.isSuccess, fetchOneUserQuery.data, t]);
 
-  const onChangeTheme = () => {
-    changeTheme(variant === 'default' ? 'dark' : 'default');
-  };
-
-  const handleResetError = () => {
-    void fetchOneUserQuery.refetch();
-  };
+  const onChangeTheme = () => { changeTheme(variant === 'default' ? 'dark' : 'default'); };
+  const handleResetError = () => void fetchOneUserQuery.refetch();
 
   return (
-    <SafeScreen
-      isError={fetchOneUserQuery.isError}
-      onResetError={() => {
-        handleResetError();
-      }}
-    >
-      <ScrollView>
-        <View
-          style={[
-            layout.justifyCenter,
-            layout.itemsCenter,
-            gutters.marginTop_80,
-          ]}
-        >
-          <View
-            style={[layout.relative, backgrounds.gray100, components.circle250]}
-          />
-
+    <SafeScreen isError={fetchOneUserQuery.isError} onResetError={handleResetError}>
+      <ScrollView contentContainerStyle={[layout.col]}>
+        {/* Image Section */}
+        <View style={[layout.justifyCenter, layout.itemsCenter, gutters.marginTop_80]}>
+          <View style={[layout.relative, backgrounds.gray100, components.circle250]} />
           <View style={[layout.absolute, gutters.paddingTop_80]}>
-            <AssetByVariant
-              path="tom"
-              resizeMode="contain"
-              style={{ height: 300, width: 300 }}
-            />
+            <AssetByVariant path="tom" resizeMode="contain" style={{ height: 300, width: 300 }} />
           </View>
         </View>
 
+        {/* Text Section */}
         <View style={[gutters.paddingHorizontal_32, gutters.marginTop_40]}>
           <View style={[gutters.marginTop_40]}>
             <Text style={[fonts.size_40, fonts.gray800, fonts.bold]}>
               {t('screen_example.title')}
             </Text>
-            <Text
-              style={[fonts.size_16, fonts.gray200, gutters.marginBottom_40]}
-            >
+            <Text style={[fonts.size_16, fonts.gray200, gutters.marginBottom_40]}>
               {t('screen_example.description')}
             </Text>
           </View>
 
-          <View
-            style={[
-              layout.row,
-              layout.justifyBetween,
-              layout.fullWidth,
-              gutters.marginTop_16,
-            ]}
-          >
+          {/* Buttons Row */}
+          <View style={[layout.row, layout.justifyBetween, layout.fullWidth, gutters.marginTop_16]}>
+            {/* Fetch User */}
             <Skeleton
               height={64}
               loading={fetchOneUserQuery.isLoading}
@@ -101,9 +66,7 @@ function Example() {
               width={64}
             >
               <TouchableOpacity
-                onPress={() => {
-                  setCurrentId(Math.ceil(Math.random() * MAX_RANDOM_ID + 1));
-                }}
+                onPress={() => { setCurrentId(Math.ceil(Math.random() * MAX_RANDOM_ID + 1)); }}
                 style={[components.buttonCircle, gutters.marginBottom_16]}
                 testID="fetch-user-button"
               >
@@ -111,6 +74,7 @@ function Example() {
               </TouchableOpacity>
             </Skeleton>
 
+            {/* Theme */}
             <TouchableOpacity
               onPress={onChangeTheme}
               style={[components.buttonCircle, gutters.marginBottom_16]}
@@ -119,7 +83,9 @@ function Example() {
               <IconByVariant path="theme" stroke={colors.purple500} />
             </TouchableOpacity>
 
+            {/* Language */}
             <TouchableOpacity
+              // eslint-disable-next-line @typescript-eslint/no-misused-promises
               onPress={toggleLanguage}
               style={[components.buttonCircle, gutters.marginBottom_16]}
               testID="change-language-button"
