@@ -8,7 +8,6 @@ export default StyleSheet.create({
     backgroundColor: '#f7f7f7',
   },
 
-  // Top bar
   topBar: {
     flexDirection: isRTL ? 'row-reverse' : 'row',
     justifyContent: 'space-between',
@@ -42,7 +41,6 @@ export default StyleSheet.create({
     padding: 5,
   },
 
-  // Content
   contentContainer: {
     flex: 1,
     padding: 20,

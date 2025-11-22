@@ -30,7 +30,6 @@ const TopBar: React.FC = () => {
 
   return (
     <View style={styles.topBar}>  
-      {/* Top row: User Info + Icons */}
       <View style={styles.userIconRow}>
         <View style={styles.userInfo}>
           <Text style={styles.userName}>{user?.name || ''}</Text>
@@ -71,8 +70,6 @@ const TopBar: React.FC = () => {
         </View>
       </View>
 
-       
-        {/* Back to Home Button */}
         {!homePage && (
              <View style={styles.bottomRow}>
             <Text style={styles.routeNameText}>

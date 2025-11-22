@@ -19,7 +19,8 @@
     },
     "notification_screen": {
        "notification": "الإشعارات",
-      "mark_all_read": "⁧اجعل الكل مقروء⁩"
+      "mark_all_read": "⁧اجعل الكل مقروء⁩",
+      "no_notifications": "لا توجد إشعارات متاحة"
     },
     "settings_screen": {
       "name": "⁧الاسم:  ⁩",

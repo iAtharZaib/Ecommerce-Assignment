@@ -12,7 +12,9 @@ const styles = StyleSheet.create({
     marginTop: 12,
     paddingVertical: 14,
   },
-
+  root: { 
+    flex: 1 
+  },
   buttonText: {
     color: '#fff',
     fontSize: 16,

@@ -46,12 +46,10 @@ type Properties = PropsWithChildren<{
 }>;
 
 function ThemeProvider({ children = false, storage }: Properties) {
-  // Current theme variant
   const [variant, setVariant] = useState(
     (storage.getString('theme') ?? 'default') as Variant,
   );
 
-  // Initialize theme at default if not defined
   useEffect(() => {
     const appHasThemeDefined = storage.contains('theme');
     if (!appHasThemeDefined) {
@@ -68,7 +66,6 @@ function ThemeProvider({ children = false, storage }: Properties) {
     [storage],
   );
 
-  // Flatten config with current variant
   const fullConfig = useMemo(() => {
     return generateConfig(variant) satisfies FulfilledThemeConfiguration;
   }, [variant]);

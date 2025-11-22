@@ -44,7 +44,6 @@ const cartSlice = createSlice({
           existing.quantity -= 1;
           state.totalAmount -= existing.price;
         } else {
-          // Remove completely if quantity is 1
           state.totalAmount -= existing.price;
           state.items = state.items.filter(i => i.id !== id);
         }

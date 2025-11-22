@@ -14,6 +14,7 @@ import auth from '@react-native-firebase/auth'
 import styles from './styles';
 import sharedStyles from '@/shared/formstyles';
 import { useI18n } from '@/hooks/language/useI18n';
+import { clearAllNotifications } from '@/redux/slices/notificationSlice';
 
 const SettingsScreen: React.FC = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const SettingsScreen: React.FC = () => {
   const handleLogout = () => {
     auth().signOut();
     dispatch(logoutUser());
+    dispatch(clearAllNotifications());
     dispatch(clearCart())
     Alert.alert(t('settings_screen.settings_success'), t('settings_screen.settings_logout_successful'));
   };

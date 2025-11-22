@@ -1,7 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Alert, I18nManager, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, I18nManager, Text, TextInput, TouchableOpacity, View,ActivityIndicator } from 'react-native';
 import { useI18n } from '@/hooks/language/useI18n';
 import { useTranslation } from 'react-i18next';
 import { Paths } from '@/navigation/paths';
@@ -18,6 +17,7 @@ const SignupScreen: React.FC = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const navigation = useNavigation();
+  const [loading, setloading] = useState(false)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
@@ -43,6 +43,7 @@ const SignupScreen: React.FC = () => {
     }
         
     try {
+      setloading(true);
       const response = await auth().createUserWithEmailAndPassword(email, password);
       const uid = response.user.uid;
       const createdAt = response.user.metadata.creationTime;
@@ -66,7 +67,7 @@ const SignupScreen: React.FC = () => {
           createdAt
         }),
       );
-
+      setloading(false);
       Alert.alert(t('signup_screen.signup_successful'), t('signup_screen.sign_up_successfully'));
     } catch (error: any) {
       if (error.code === 'auth/email-already-in-use') {
@@ -132,9 +133,16 @@ const SignupScreen: React.FC = () => {
           />
         </TouchableOpacity>
       </View>
-
-      <TouchableOpacity onPress={handleSignup} style={styles.button}>
-        <Text style={styles.buttonText}>{t('signup_screen.signup')}</Text>
+        <TouchableOpacity
+        disabled={loading}
+        onPress={handleSignup}
+        style={styles.button}
+      >
+        {loading ? (
+          <ActivityIndicator color="#fff" />
+        ) : (
+          <Text style={styles.buttonText}>{t('signup_screen.signup')}</Text>
+        )}
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate(Paths.Login)} style={styles.linkButton}>
         <Text style={styles.linkButtonText}>{t('signup_screen.already_have_account')} {t('login_screen.login')}</Text>

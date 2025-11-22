@@ -21,8 +21,8 @@ import { useDispatch } from 'react-redux';
 import { setUser, UserInfo } from '@/redux/slices/userSlice';
 
 const LoginScreen: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const [showPassword, setShowPassword] = useState(false);
   const [loading] = useState(false);
   const navigation = useNavigation();
@@ -45,6 +45,9 @@ const LoginScreen: React.FC = () => {
   try {
     const response = await auth().signInWithEmailAndPassword(email, password);
     const uid = response.user.uid;
+    const nameFromResponse = response.user.displayName;
+    const emailFromResponse = response.user.email;
+    const creationTime = response.user.metadata.creationTime;
     const fallbackcreatedAt = Date.now();
     try {
       const doc = await firestore().collection('users').doc(uid).get();
@@ -53,18 +56,18 @@ const LoginScreen: React.FC = () => {
         dispatch(
           setUser({
             uid,
-            name: data?.name ?? response.user.displayName ?? '',
-            email: data?.email ?? response.user.email ?? '',
-            createdAt: fallbackcreatedAt ?? response.user.metadata.creationTime ?? 0,
+            name: data?.name ?? nameFromResponse ?? '',
+            email: data?.email ?? emailFromResponse ?? '',
+            createdAt: fallbackcreatedAt ?? creationTime ?? 0,
           }),
         );
       } else {
         dispatch(
           setUser({
             uid,
-            name: response.user.displayName ?? '',
-            email: response.user.email ?? '',
-            createdAt: response.user.metadata.creationTime ?? 0 ,
+            name: nameFromResponse ?? '',
+            email: emailFromResponse ?? '',
+            createdAt: creationTime ?? 0 ,
           }),
         );
       }
@@ -76,22 +79,28 @@ const LoginScreen: React.FC = () => {
   } catch (error: any) {
     if (error.code === 'auth/email-already-in-use') {
       Alert.alert(t('login_screen.login_failed'), t('login_screen.email_in_use'));
+      return;
     }
     if (error.code === 'auth/invalid-email') {
       Alert.alert(t('login_screen.login_failed'), t('login_screen.email_invalid'));
+      return;
     }
     if (error.code === 'auth/user-not-found') {
       Alert.alert(t('login_screen.login_failed'), t('login_screen.user_not_found'));
+      return;
     }
     if (error.code === 'auth/wrong-password' ) {
       Alert.alert(t('login_screen.login_failed'), t('login_screen.wrong_password'));
     }
     if (error.code === 'auth/invalid-credential') {
       Alert.alert(t('login_screen.login_failed'), t('login_screen.invalid_credentials'));
+      return;
+    }
+    else {
+      console.error(error);
+      Alert.alert(t('login_screen.login_failed'), String(error?.message ?? ''));
     }
 
-    console.error(error);
-    Alert.alert(t('login_screen.login_failed'), String(error?.message ?? ''));
   }
   };
 
@@ -101,7 +110,6 @@ const LoginScreen: React.FC = () => {
         {t('login_screen.login')}
       </Text>
 
-      {/* Email Input */}
       <TextInput
         autoCapitalize="none"
         keyboardType="email-address"
@@ -111,7 +119,6 @@ const LoginScreen: React.FC = () => {
         value={email}
       />
 
-      {/* Password Input + Emoji Eye */}
       <View style={styles.passwordWrapper}>
         <TextInput
           onChangeText={setPassword}
@@ -133,7 +140,6 @@ const LoginScreen: React.FC = () => {
         </TouchableOpacity>
       </View>
 
-      {/* Login Button */}
       <TouchableOpacity
         disabled={loading}
         onPress={handleLogin}

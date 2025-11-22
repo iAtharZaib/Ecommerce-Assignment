@@ -8,7 +8,18 @@ export default StyleSheet.create({
     backgroundColor: "#f7f7f7",
   },
 
-
+  unreadstyles :{
+    alignSelf: isRTL ? 'flex-start' : 'flex-end',
+    backgroundColor: '#4F46E5',
+    borderRadius: 12,
+    margin: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+  unreadColor:{ 
+    color: '#fff',
+     fontWeight: '600'
+     },
   userInfo: {
     backgroundColor: "transparent",
   },
@@ -52,11 +63,32 @@ export default StyleSheet.create({
     fontSize: 10,
     fontWeight: "bold",
   },
+  emptyNotifications: {
+     flex: 1, 
+     justifyContent: 'center', 
+     alignItems: 'center'
+     },
+emptyContainer: {
+    alignItems: 'center',
+    flex: 1,
+    gap: 12,
+    justifyContent: 'center',
+  },
 
-  // Notification List
+  emptyIcon: { 
+    height: 100,
+     resizeMode: 'contain',
+      width: 100
+     },
+  emptyText: {
+    color: '#999',
+    fontSize: 18,
+    marginTop: 8,
+    textAlign: 'center',
+  },
   listContent: {
-    padding: 12,
-    paddingBottom: 20,
+   flex:1,
+   backgroundColor:'#fff'
   },
 
   notificationCard: {

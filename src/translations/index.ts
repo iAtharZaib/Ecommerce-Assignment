@@ -19,7 +19,6 @@ export const resources = {
 
 const LANGUAGE_KEY = 'APP_LANGUAGE';
 
-// Helper to set RTL direction
 const setRTL = (lang: Language) => {
   const isRTL = lang.startsWith('ar');
   I18nManager.allowRTL(isRTL);
@@ -39,7 +38,6 @@ void (async () => {
       resources,
     });
 
-    // Capitalization formatter
     i18n.services.formatter?.add(
       'capitalize',
       (value: string) =>

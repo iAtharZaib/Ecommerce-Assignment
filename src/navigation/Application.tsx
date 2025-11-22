@@ -18,7 +18,6 @@ const isRTL = I18nManager.isRTL;
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-// Authenticated Stack (for logged-in users)
 function AuthenticatedStack() {
   return (
     <Stack.Navigator
@@ -36,7 +35,6 @@ function AuthenticatedStack() {
   );
 }
 
-// Unauthenticated Stack (for login/signup)
 function UnauthenticatedStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>

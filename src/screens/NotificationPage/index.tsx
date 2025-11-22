@@ -20,7 +20,6 @@ import {
 import styles from './styles';
 const NotificationScreen: React.FC = () => {
   const dispatch = useDispatch();
-  const isRTL = I18nManager.isRTL;
   const { t } = useTranslation();
 
   const notifications = useSelector(getNotifications);
@@ -44,7 +43,7 @@ const NotificationScreen: React.FC = () => {
 
       <View style={styles.contentWrapper}>
         <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.message}>{item.description}</Text>
+        <Text style={styles.message}>{item.body}</Text>
         <Text style={styles.time}>
           {item.date}
         </Text>
@@ -57,31 +56,32 @@ const NotificationScreen: React.FC = () => {
   return (
     <View style={styles.container}>
 
-      {/* MARK ALL READ BUTTON */}
       {unreadCount > 0 && (
         <TouchableOpacity
           onPress={handleMarkAllRead}
-          style={{
-            alignSelf: isRTL ? 'flex-start' : 'flex-end',
-            backgroundColor: '#4F46E5',
-            borderRadius: 12,
-            margin: 12,
-            paddingHorizontal: 12,
-            paddingVertical: 6,
-          }}
+          style={styles.unreadstyles}
         >
-          <Text style={{ color: '#fff', fontWeight: '600' }}>
+          <Text style={styles.unreadColor}>
             {t('notification_screen.mark_all_read')}
           </Text>
         </TouchableOpacity>
       )}
 
-      {/* NOTIFICATIONS LIST */}
       <FlatList
-        contentContainerStyle={styles.listContent}
         data={notifications}
         keyExtractor={item => item.id.toString()}
         renderItem={renderItem}
+        contentContainerStyle={
+          notifications.length === 0
+            ? styles.emptyNotifications
+            : undefined
+        }
+        ListEmptyComponent={() => (
+        <View style={styles.emptyContainer}>
+        <Icon name="notifications-outline" size={80} color="#ccc" />
+        <Text style={styles.emptyText}>{t('notification_screen.no_notifications')}</Text>
+        </View>
+        )}
       />
     </View>
   );

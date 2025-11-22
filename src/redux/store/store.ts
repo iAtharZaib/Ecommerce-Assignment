@@ -4,17 +4,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import logger from 'redux-logger'
 import rootReducer from '../reducers/rootreducers';
 
-// Persist configuration
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['cart', 'user', 'notifications'], // slices you want to persist
+  whitelist: ['cart', 'user', 'notifications'], 
 };
 
-// Wrap rootReducer with persistReducer
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-// Create store using Redux Toolkit's configureStore (includes thunk by default)
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
@@ -22,5 +19,4 @@ export const store = configureStore({
   devTools: true,
 });
 
-// Create persistor
 export const persistor = persistStore(store);

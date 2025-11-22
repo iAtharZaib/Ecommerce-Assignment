@@ -19,7 +19,8 @@
     },
     "notification_screen": {
       "notification": "Notifications",
-      "mark_all_read": "Mark All Read"
+      "mark_all_read": "Mark All Read",
+      "no_notifications": "No notifications available"
     },
     "settings_screen": {
       "name": "Name:  ",

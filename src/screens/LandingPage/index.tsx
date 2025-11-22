@@ -26,7 +26,6 @@ interface LandingScreenProps {
   userEmail?: string;
 }
 
-// eslint-disable-next-line react/function-component-definition
 const LandingScreen: React.FC<LandingScreenProps> = ({
   userEmail = '',
   userName = '',
@@ -52,7 +51,6 @@ const LandingScreen: React.FC<LandingScreenProps> = ({
   return (
     <View style={styles.mainContainer}>
 
-      {/* Product Grid */}
       <FlatList
         columnWrapperStyle={styles.row}
         contentContainerStyle={styles.listContent}
