@@ -44,7 +44,7 @@ export default StyleSheet.create({
     left: isRTL ? -2 : undefined,
     minWidth: 16,
     height: 16,
-    borderRadius: 8,
+    borderRadius: 12,
     backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center',

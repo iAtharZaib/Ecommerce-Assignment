@@ -6,10 +6,10 @@ const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     backgroundColor: '#4F46E5',
-    borderRadius: 8,
+    borderRadius: 500,
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 8,
+    marginTop: 12,
     paddingVertical: 14,
   },
 
@@ -25,7 +25,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     flex: 1,
     justifyContent: 'center',
-    padding: 24,
+    paddingHorizontal: 24,
+  },
+
+  gradientContainer: {
+    backgroundColor: '#f8f9ff',
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 24,
   },
 
   eyeButton: {
@@ -33,6 +40,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 12,
     paddingVertical: 10,
+    marginLeft: isRTL ? 0 : 'auto',
+    marginRight: isRTL ? 'auto' : 0,
   },
 
   eyeIcon: {
@@ -40,43 +49,80 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    borderColor: '#ccc',
-    borderRadius: 8,
+    backgroundColor: '#f5f5f5',
+    borderColor: '#ddd',
+    borderRadius: 500,
     borderWidth: 1,
-    marginBottom: 16,
+    fontSize: 16,
+    marginBottom: 12,
     paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingVertical: 14,
     textAlign: isRTL ? 'right' : 'left',
     writingDirection: isRTL ? 'rtl' : 'ltr',
   },
 
-  passwordInput: {
-    flex: 1,
+  languageButton: {
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+    borderRadius: 500,
+    flexDirection: 'row',
+    gap: 8,
+    justifyContent: 'center',
+    marginTop: 20,
     paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingVertical: 10,
+  },
+
+  languageButtonText: {
+    color: '#333',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+
+  passwordInput: {
+    backgroundColor: '#f5f5f5',
+    flex: 1,
+    fontSize: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 14,
     textAlign: isRTL ? 'right' : 'left',
     writingDirection: isRTL ? 'rtl' : 'ltr',
-    marginLeft: isRTL ? 0 : 0,
-    marginRight: isRTL ? 12 : 0,
   },
 
   passwordWrapper: {
     alignItems: 'center',
-    borderColor: '#ccc',
-    borderRadius: 8,
+    backgroundColor: '#f5f5f5',
+    borderColor: '#ddd',
+    borderRadius: 500,
     borderWidth: 1,
-    flexDirection: 'row',
+    flexDirection: isRTL ? 'row' : 'row',
     justifyContent: 'space-between',
-    marginBottom: 16,
+    marginBottom: 12,
+    paddingRight: isRTL ? 0 : 0,
   },
 
   title: {
     alignSelf: 'center',
+    color: '#1f2937',
     fontSize: 32,
     fontWeight: 'bold',
-    marginBottom: 32,
+    marginBottom: 40,
     textAlign: 'center',
     writingDirection: isRTL ? 'rtl' : 'ltr',
+  },
+
+  linkButton: {
+    backgroundColor: '#f0f0f0',
+    borderRadius: 500,
+    marginTop: 12,
+    paddingVertical: 14,
+  },
+
+  linkButtonText: {
+    color: '#4F46E5',
+    fontSize: 14,
+    fontWeight: '600',
+    textAlign: 'center',
   },
 });
 

@@ -91,15 +91,15 @@ const SignupScreen: React.FC = () => {
       <TouchableOpacity onPress={handleLogin} style={styles.button}>
         <Text style={styles.buttonText}>{t('signup_screen.signup')}</Text>
       </TouchableOpacity>
-       <TouchableOpacity onPress={() => navigation.navigate(Paths.Login)} style={styles.button}>
-        <Text style={styles.buttonText}>{t('signup_screen.already_have_account')} · {t('login_screen.login')}</Text>
+      <TouchableOpacity onPress={() => navigation.navigate(Paths.Login)} style={styles.linkButton}>
+        <Text style={styles.linkButtonText}>{t('signup_screen.already_have_account')} {t('login_screen.login')}</Text>
       </TouchableOpacity>
 
 
-       <TouchableOpacity onPress={toggleLanguage} style={styles.button}>
-        <Text style={styles.buttonText}>{t('settings_screen.change_language')}</Text>
+       <TouchableOpacity onPress={toggleLanguage} style={styles.languageButton}>
+        <Text style={styles.languageButtonText}>{t('settings_screen.change_language')}</Text>
       </TouchableOpacity>
-    </View>
+      </View>
   );
 }
 export default SignupScreen;

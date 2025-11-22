@@ -11,6 +11,7 @@ import { clearCart } from '@/redux/slices/cartSlice';
 import { getUser, logoutUser } from '@/redux/slices/userSlice';
 
 import styles from './styles';
+import sharedStyles from '@/shared/formstyles';
 import { useI18n } from '@/hooks/language/useI18n';
 
 const SettingsScreen: React.FC = () => {
@@ -36,18 +37,8 @@ const SettingsScreen: React.FC = () => {
           {t('settings_screen.email')}: {user?.email || t('settings_screen.user_email')}
         </Text>
 
-        <TouchableOpacity
-          onPress={toggleLanguage}
-          style={{
-            backgroundColor: '#4F46E5',
-            borderRadius: 12,
-            paddingHorizontal: 32,
-            paddingVertical: 12,
-          }}
-        >
-          <Text style={{ color: '#fff', fontSize: 16, fontWeight: 'bold' }}>
-            {t('settings_screen.change_language')}
-          </Text>
+        <TouchableOpacity onPress={toggleLanguage} style={sharedStyles.languageButton}>
+          <Text style={sharedStyles.languageButtonText}>{t('settings_screen.change_language')}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity

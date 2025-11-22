@@ -108,9 +108,9 @@ const LoginScreen: React.FC = () => {
        <TouchableOpacity
         disabled={loading}
         onPress={() => navigation.navigate(Paths.Signup)}
-        style={styles.button}
+        style={styles.linkButton}
       >
-         <Text style={styles.buttonText}>{t('login_screen.dont_have_account')} · {t('signup_screen.signup')}</Text>
+         <Text style={styles.linkButtonText}>{t('login_screen.dont_have_account')} {t('signup_screen.signup')}</Text>
       </TouchableOpacity>
     </View>
   );

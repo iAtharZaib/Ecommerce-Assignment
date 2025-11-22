@@ -18,6 +18,7 @@
       "yes": "Yes"
     },
     "notification_screen": {
+      "notification": "Notifications",
       "mark_all_read": "Mark All Read"
     },
     "settings_screen": {

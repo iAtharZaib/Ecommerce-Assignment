@@ -34,6 +34,7 @@ const NotificationScreen: React.FC = () => {
   const renderItem = ({ item }: { item: NotificationItem }) => (
     <TouchableOpacity
       activeOpacity={0.8}
+      disabled={item.read}
       onPress={() => dispatch(markNotificationRead(item.id))}
       style={styles.notificationCard}
     >

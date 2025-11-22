@@ -23,7 +23,7 @@ const TopBar: React.FC = () => {
   const routeDisplayName: Record<string, string> = {
     [Paths.LandingPage]: t('landing_page.add_to_cart'),
     [Paths.Cart]: t('cart_screen.clear_cart'),
-    [Paths.Notification]: t('notification_screen.mark_all_read'),
+    [Paths.Notification]: t('notification_screen.notification'),
     [Paths.Settings]: t('settings_screen.logout'),
   };
 

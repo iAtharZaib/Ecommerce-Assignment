@@ -26,19 +26,15 @@ const setRTL = (lang: Language) => {
   I18nManager.forceRTL(isRTL);
 };
 
-// Initialize i18n
 void (async () => {
   try {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const savedLang = (await AsyncStorage.getItem(LANGUAGE_KEY)) ?? 'en-EN';
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     setRTL(savedLang as Language);
 
     await i18n.use(initReactI18next).init({
       defaultNS,
       fallbackLng: 'en-EN',
       interpolation: { escapeValue: false },
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       lng: savedLang,
       resources,
     });
