@@ -16,7 +16,8 @@ const TopBar: React.FC = () => {
   const { t } = useTranslation();
   const homePage = route.name === Paths.LandingPage;
 
-  const cartCount = useSelector(getCartItems).length;
+  const cartItems = useSelector(getCartItems);
+  const quantity = cartItems.reduce((total, item) => total + item.quantity, 0);
   const unreadNotifications = useSelector(getUnreadCount);
   const user = useSelector(getUser);
 
@@ -54,9 +55,9 @@ const TopBar: React.FC = () => {
             onPress={() => navigation.navigate(Paths.Cart)}
           >
             <Icon name="cart-outline" size={28} color="#fff" />
-            {cartCount > 0 && (
+            {quantity > 0 && (
               <View style={styles.badge}>
-                <Text style={styles.badgeText}>{cartCount}</Text>
+                <Text style={styles.badgeText}>{quantity}</Text>
               </View>
             )}
           </TouchableOpacity>

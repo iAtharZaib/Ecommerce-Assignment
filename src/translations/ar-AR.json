@@ -27,7 +27,9 @@
       "user_name": "⁧اسم المستخدم⁩",
       "user_email": "⁧user@example.com⁩",
       "change_language": "⁧تغيير اللغة⁩",
-      "logout": "⁧تسجيل الخروج⁩"
+      "logout": "⁧تسجيل الخروج⁩",
+      "settings_success": "نجاح",
+      "settings_logout_successful": "تم تسجيل الخروج بنجاح"
     },
     "login_screen": {
       "login": "⁧تسجيل الدخول⁩",
@@ -40,7 +42,16 @@
       "success": "⁧نجاح⁩",
       "welcome": "⁧مرحباً⁩",
       "login_failed": "⁧فشل تسجيل الدخول⁩",
-      "dont_have_account": "⁧ليس لديك حساب؟⁩"
+      "dont_have_account": "⁧ليس لديك حساب؟⁩",
+      "login-success": "⁧نجاح⁩",
+      "logged_in_successfully": "⁧تم تسجيل الدخول بنجاح⁩",
+      "email_in_use": "⁧عنوان البريد الإلكتروني هذا مستخدم بالفعل!⁩",
+      "email_invalid": "⁧عنوان البريد الإلكتروني هذا غير صالح!⁩",
+      "weak_password": "⁧كلمة المرور ضعيفة جدًا!⁩",
+      "operation_not_allowed": "⁧العملية غير مسموح بها!⁩",
+      "user_not_found": "⁧المستخدم غير موجود⁩",
+      "wrong_password": "⁧كلمة المرور خاطئة⁩",
+      "invalid_credentials": "⁧البريد الإلكتروني أو كلمة المرور غير صحيحة⁩"
     },
     "signup_screen": {
       "signup": "⁧إنشاء حساب⁩",
@@ -50,7 +61,10 @@
       "invalid_email": "⁧يرجى إدخال عنوان بريد إلكتروني صحيح⁩",
       "password_at_least_7": "⁧يجب أن تكون كلمة المرور 7 أحرف على الأقل⁩",
       "enter_details": "⁧يرجى إدخال تفاصيلك⁩",
-      "error": "⁧خطأ⁩"
+      "error": "⁧خطأ⁩",
+      "signup_successful": "⁧نجاح⁩",
+      "sign_up_successfully": "⁧تم إنشاء الحساب بنجاح⁩",
+      "signup_failed": "⁧فشل إنشاء الحساب⁩"
     }
   }
 }

@@ -40,14 +40,14 @@ function AuthenticatedStack() {
 function UnauthenticatedStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen component={Signup} name={Paths.Signup} />
       <Stack.Screen component={Login} name={Paths.Login} />
+      <Stack.Screen component={Signup} name={Paths.Signup} />
     </Stack.Navigator>
   );
 }
 
 function ApplicationNavigator() {
-  const isLoggedIn = useSelector((state: any) => state.user?.isLoggedIn);
+const isLoggedIn = useSelector((state: any) => state.user?.isLoggedIn);
 
   return (
     <SafeAreaProvider>

@@ -27,7 +27,9 @@
       "user_name": "User Name",
       "user_email": "user@example.com",
       "change_language": "Change Language",
-      "logout": "Logout"
+      "logout": "Logout",
+      "settings_success": "Success",
+      "settings_logout_successful": "Logout successful"
     },
     "login_screen": {
       "login": "Login",
@@ -40,7 +42,16 @@
       "success": "Success",
       "welcome": "Welcome",
       "login_failed": "Login Failed",
-      "dont_have_account": "Don't have an account? "
+      "dont_have_account": "Don't have an account? ",
+      "login-success": "Success",
+      "logged_in_successfully": "Logged in successfully",
+      "email_in_use": "That email address is already in use!",
+      "email_invalid": "That email address is invalid!",
+      "weak_password": "The password is too weak!",
+      "operation_not_allowed": "Operation not allowed!",
+      "user_not_found": "User not found",
+      "wrong_password": "Wrong password",
+      "invalid_credentials": "Invalid email or password"
     },
     "signup_screen": {
       "signup": "Signup",
@@ -50,7 +61,9 @@
       "invalid_email": "Please enter a valid email address",
       "password_at_least_7": "Password must be at least 7 characters long",
       "enter_details": "Please enter your details",
-      "error": "Error"
+      "error": "Error",
+      "signup_successful": "Success",
+      "sign_up_successfully": "Signup successful"
     }
   }
 }

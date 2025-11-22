@@ -1,6 +1,5 @@
-import '../../../firebase'; // Initialize Firebase
 
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useTranslation } from 'react-i18next';
 import {
@@ -12,11 +11,13 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-
+import auth from '@react-native-firebase/auth'
 import styles from '@/shared/formstyles';
 import { useNavigation } from '@react-navigation/native';
 import { Paths } from '@/navigation/paths';
 import { emailRegex, passwordRegex } from '@/shared/helpers';
+import { useDispatch } from 'react-redux';
+import { setUser } from '@/redux/slices/userSlice';
 
 const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -24,6 +25,7 @@ const LoginScreen: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading] = useState(false);
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const { t } = useTranslation();
   const handleLogin = async () => {
     
@@ -40,18 +42,34 @@ const LoginScreen: React.FC = () => {
       return;
     }
     
+  auth().signInWithEmailAndPassword(email, password)
+  .then((response) => {
+     dispatch(setUser({
+            name: response.user.displayName,
+            email:response.user.email,
+            uid: response.user.uid 
+        }))
+    Alert.alert(t('login_screen.login-success'), t('login_screen.logged_in_successfully'));
+  })
+  .catch(error => {
+    if (error.code === 'auth/email-already-in-use') {
+      Alert.alert(t('login_screen.login_failed'), t('login_screen.email_in_use'));
+    }
+    if (error.code === 'auth/invalid-email') {
+      Alert.alert(t('login_screen.login_failed'), t('login_screen.email_invalid'));
+    }
+    if (error.code === 'auth/user-not-found') {
+      Alert.alert(t('login_screen.login_failed'), t('login_screen.user_not_found'));
+    }
+    if (error.code === 'auth/wrong-password' ) {
+      Alert.alert(t('login_screen.login_failed'), t('login_screen.wrong_password'));
+    }
+    if (error.code === 'auth/invalid-credential') {
+      Alert.alert(t('login_screen.login_failed'), t('login_screen.invalid_credentials'));
+    }
 
-
-    // try {
-    //   setLoading(true);
-    //   const userCredential = await auth().signInWithEmailAndPassword(email, password);
-    //   setLoading(false);
-    //   Alert.alert(t('login_screen.success'), `${t('login_screen.welcome')} ${userCredential.user.email}`);
-    //   // TODO: Navigate to your home screen
-    // } catch (error: any) {
-    //   setLoading(false);
-    //   Alert.alert(t('login_screen.login_failed'), String(error?.message ?? ''));
-    // }
+    console.error(error);
+  });
   };
 
   return (

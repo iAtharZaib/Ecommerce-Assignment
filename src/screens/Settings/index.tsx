@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+    Alert,
   Text,
   TouchableOpacity,
   View,
@@ -9,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 
 import { clearCart } from '@/redux/slices/cartSlice';
 import { getUser, logoutUser } from '@/redux/slices/userSlice';
-
+import auth from '@react-native-firebase/auth'
 import styles from './styles';
 import sharedStyles from '@/shared/formstyles';
 import { useI18n } from '@/hooks/language/useI18n';
@@ -22,8 +23,10 @@ const SettingsScreen: React.FC = () => {
   const user = useSelector(getUser);
 
   const handleLogout = () => {
+    auth().signOut();
     dispatch(logoutUser());
     dispatch(clearCart())
+    Alert.alert(t('settings_screen.settings_success'), t('settings_screen.settings_logout_successful'));
   };
 
   return (

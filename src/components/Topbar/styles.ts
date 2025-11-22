@@ -5,7 +5,7 @@ const isRTL = I18nManager.isRTL;
 export default StyleSheet.create({
   topBar: {
     backgroundColor: '#4F46E5',
-    paddingTop: 20,
+    paddingTop: 50,
     paddingHorizontal: 16,
     paddingBottom: 10,
   },
