@@ -4,7 +4,7 @@ import {
   Text,
   FlatList,
   TouchableOpacity,
-
+  Image,
   Alert
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -47,7 +47,10 @@ const CartScreen: React.FC = () => {
 
   const renderItem = ({ item }: { item: CartItem }) => (
     <View style={styles.cartItem}>
-      <Text style={styles.itemTitle}>{item.title}</Text>
+    <View style={styles.imageRow}>
+        <Text style={styles.itemTitle} numberOfLines={2}>{item.title}</Text>
+        <Image source={{ uri: item.image }} style={styles.itemImage} />
+     </View>
       <View style={styles.quantityRow}>
         <TouchableOpacity style={styles.qtyButton} onPress={() => handleDecrement(item)}>
           <Text style={styles.qtyText}>-</Text>

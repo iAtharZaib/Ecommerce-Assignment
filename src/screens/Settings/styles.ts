@@ -65,31 +65,19 @@ export default StyleSheet.create({
     paddingBottom: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#f0f0f0',
-    flexDirection: isRTL ? 'row-reverse' : 'row',
   },
 
   fieldRowLast: {
     marginBottom: 0,
     paddingBottom: 0,
     borderBottomWidth: 0,
-    flexDirection: isRTL ? 'row-reverse' : 'row',
-  },
-
-  fieldLabel: {
-    fontSize: 15,
-    marginHorizontal:3,
-    fontWeight: '700',
-    color: '#888',
-    textTransform: 'uppercase',
-    textAlign: isRTL ? 'right' : 'left',
-    writingDirection: isRTL ? 'rtl' : 'ltr',
   },
 
   fieldValue: {
     fontSize: 15,
     fontWeight: '500',
     color: '#1f2937',
-    textAlign: isRTL ? 'right' : 'left',
+    textAlign: 'center',
     writingDirection: isRTL ? 'rtl' : 'ltr',
   },
 
