@@ -1,7 +1,7 @@
 import '../../../firebase'; // Initialize Firebase
 
-import auth from '@react-native-firebase/auth';
 import React, { useState } from 'react';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { useTranslation } from 'react-i18next';
 import {
   ActivityIndicator,
@@ -19,41 +19,42 @@ import {
 import styles from '@/shared/formstyles';
 import { useNavigation } from '@react-navigation/native';
 import { Paths } from '@/navigation/paths';
+import { emailRegex, passwordRegex } from '@/shared/helpers';
 
 const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   const navigation = useNavigation();
   const { t } = useTranslation();
   const handleLogin = async () => {
-  
-    // if (!email || !password) {
-    //   Alert.alert('Error', 'Please enter both email and password');
-    //   return;
-    // }
-
-    // if (!emailRegex.test(email)) {
-    //   Alert.alert('Error', 'Please enter a valid email address');
-    //   return;
-    // }
-
-    // if (!passwordRegex.test(password)) {
-    //   Alert.alert('Error', 'Password must be exactly 7 characters long');
-    //   return;
-    // }
-
-    try {
-      setLoading(true);
-      const userCredential = await auth().signInWithEmailAndPassword(email, password);
-      setLoading(false);
-      Alert.alert(t('login_screen.success'), `${t('login_screen.welcome')} ${userCredential.user.email}`);
-      // TODO: Navigate to your home screen
-    } catch (error: any) {
-      setLoading(false);
-      Alert.alert(t('login_screen.login_failed'), String(error?.message ?? ''));
+    
+    if (!email || !password) {
+      Alert.alert(t('login_screen.error'), t('login_screen.enter_both'));
+      return;
     }
+    if (!emailRegex.test(email)) {
+      Alert.alert(t('login_screen.error'), t('login_screen.invalid_email'));
+      return;
+    }
+    if (!passwordRegex.test(password)) {
+      Alert.alert(t('login_screen.error'), t('login_screen.password_too_short'));
+      return;
+    }
+    
+
+
+    // try {
+    //   setLoading(true);
+    //   const userCredential = await auth().signInWithEmailAndPassword(email, password);
+    //   setLoading(false);
+    //   Alert.alert(t('login_screen.success'), `${t('login_screen.welcome')} ${userCredential.user.email}`);
+    //   // TODO: Navigate to your home screen
+    // } catch (error: any) {
+    //   setLoading(false);
+    //   Alert.alert(t('login_screen.login_failed'), String(error?.message ?? ''));
+    // }
   };
 
   return (
@@ -85,7 +86,12 @@ const LoginScreen: React.FC = () => {
           onPress={() => setShowPassword(!showPassword)}
           style={styles.eyeButton}
         >
-          <Text style={styles.eyeIcon}>{showPassword ? '🙈' : '👁️'}</Text>
+          <Icon
+            name={showPassword ? 'eye-off' : 'eye'}
+            size={22}
+            color="#333"
+            style={styles.eyeIcon}
+          />
         </TouchableOpacity>
       </View>
 

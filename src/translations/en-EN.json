@@ -31,7 +31,11 @@
     "login_screen": {
       "login": "Login",
       "enter_email": "Enter your Email",
-      "password_7_chars": "Password (7 characters)",
+      "password_7_chars": "Enter your password",
+      "error": "Error",
+      "password_too_short": "Password must be more than 7 characters long",
+      "enter_both": "Please enter both email and password",
+      "invalid_email": "Please enter a valid email address",
       "success": "Success",
       "welcome": "Welcome",
       "login_failed": "Login Failed",
