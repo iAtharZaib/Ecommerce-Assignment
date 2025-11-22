@@ -29,6 +29,8 @@ const styles = StyleSheet.create({
   },
 
   eyeButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingHorizontal: 12,
     paddingVertical: 10,
   },
@@ -54,6 +56,8 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     textAlign: isRTL ? 'right' : 'left',
     writingDirection: isRTL ? 'rtl' : 'ltr',
+    marginLeft: isRTL ? 0 : 0,
+    marginRight: isRTL ? 12 : 0,
   },
 
   passwordWrapper: {
@@ -61,7 +65,8 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 8,
     borderWidth: 1,
-    flexDirection: isRTL ? 'row-reverse' : 'row',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginBottom: 16,
   },
 

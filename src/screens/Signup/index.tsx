@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useState } from 'react';
-import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { Alert, I18nManager, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 import { useI18n } from '@/hooks/language/useI18n';
 import { useTranslation } from 'react-i18next';
@@ -41,19 +42,19 @@ const SignupScreen: React.FC = () => {
        }
 
     // Replace this with your login logic
-    Alert.alert(t('signup_screen.signup'), `${t('signup_screen.username')}: ${username}\n${t('en.enter_email')}: ${email}`);
+    Alert.alert(t('signup_screen.signup'), `${t('signup_screen.username')}: ${username}\n${t('login_screen.enter_email')}: ${email}`);
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{t('signup_screen.signup')}</Text>
+      <Text style={[styles.title, { textAlign: I18nManager.isRTL ? 'right' : 'left' }]}>{t('signup_screen.signup')}</Text>
 
       <TextInput
         autoCapitalize="none"
         keyboardType="email-address"
         onChangeText={setEmail}
         placeholder={t('login_screen.enter_email')}
-        style={styles.input}
+        style={[styles.input, { textAlign: I18nManager.isRTL ? 'right' : 'left' }]}
         value={email}
       />
    <TextInput
@@ -61,7 +62,7 @@ const SignupScreen: React.FC = () => {
         keyboardType="default"
         onChangeText={setUsername}
         placeholder={t('signup_screen.username')}
-        style={styles.input}
+        style={[styles.input, { textAlign: I18nManager.isRTL ? 'right' : 'left' }]}
         value={username}
       />
 
@@ -70,7 +71,7 @@ const SignupScreen: React.FC = () => {
           onChangeText={setPassword}
           placeholder={t('login_screen.password_7_chars')}
           secureTextEntry={!showPassword}
-          style={styles.passwordInput}
+          style={[styles.passwordInput, { textAlign: I18nManager.isRTL ? 'right' : 'left' }]}
           value={password}
         />
 
@@ -78,9 +79,12 @@ const SignupScreen: React.FC = () => {
           onPress={() => { setShowPassword(!showPassword); }}
           style={styles.eyeButton}
         >
-          <Text style={styles.eyeIcon}>
-            {showPassword ? '🙈' : '👁️'}
-          </Text>
+          <Icon
+            name={showPassword ? 'eye-off' : 'eye'}
+            size={22}
+            color="#333"
+            style={styles.eyeIcon}
+          />
         </TouchableOpacity>
       </View>
 

@@ -32,7 +32,7 @@ void (async () => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const savedLang = (await AsyncStorage.getItem(LANGUAGE_KEY)) ?? 'en-EN';
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    setRTL(savedLang);
+    setRTL(savedLang as Language);
 
     await i18n.use(initReactI18next).init({
       defaultNS,

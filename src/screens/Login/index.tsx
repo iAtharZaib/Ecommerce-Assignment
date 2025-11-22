@@ -13,9 +13,6 @@ import {
   View,
 } from 'react-native';
 
-
-// validation regex helpers (commented out until used)
-// import { emailRegex, passwordRegex } from '@/helpers';
 import styles from '@/shared/formstyles';
 import { useNavigation } from '@react-navigation/native';
 import { Paths } from '@/navigation/paths';
