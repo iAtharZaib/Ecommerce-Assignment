@@ -1,15 +1,5 @@
 {
   "ecomapp": {
-    "common_appName": {
-      "full": "⁧تطبيق إي كوم React Native⁩",
-      "initials": "⁧RNB⁩"
-    },
-    "common_error": "⁧حدث خطأ ما.⁩",
-    "screen_example": {
-      "hello_user": "⁧مرحباً، اسمي {{name}}⁩",
-      "title": "⁧مرحباً بك في $t(common_appName.full)⁩",
-      "description": "⁧هل تريد اكتشاف بعض الميزات؟ اضغط على أحد الأزرار الثلاثة أسفل الشاشة. الأول يسمح لك باستدعاء واجهة REST API. الثاني يغير لون السمة. والثالث يغير اللغة.⁩"
-    },
     "error_boundary": {
       "title": "⁧عذراً! حدث خطأ ما.⁩",
       "description": "⁧نأسف للإزعاج. يرجى المحاولة مرة أخرى لاحقاً.⁩",
@@ -44,11 +34,13 @@
       "password_7_chars": "⁧كلمة المرور (7 أحرف)⁩",
       "success": "⁧نجاح⁩",
       "welcome": "⁧مرحباً⁩",
-      "login_failed": "⁧فشل تسجيل الدخول⁩"
+      "login_failed": "⁧فشل تسجيل الدخول⁩",
+      "dont_have_account": "⁧ليس لديك حساب؟⁩"
     },
     "signup_screen": {
       "signup": "⁧إنشاء حساب⁩",
       "username": "⁧اسم المستخدم⁩",
+      "already_have_account": "⁧هل لديك حساب بالفعل؟⁩",
       "at_least_5_chars": "⁧يجب أن يكون اسم المستخدم 5 أحرف على الأقل⁩",
       "invalid_email": "⁧يرجى إدخال عنوان بريد إلكتروني صحيح⁩",
       "password_at_least_7": "⁧يجب أن تكون كلمة المرور 7 أحرف على الأقل⁩",

@@ -18,8 +18,6 @@ import {
 } from '@/redux/slices/notificationSlice';
 
 import styles from './styles';
-import TopBar from '@/components/Topbar';
-
 const NotificationScreen: React.FC = () => {
   const dispatch = useDispatch();
   const isRTL = I18nManager.isRTL;
@@ -57,8 +55,6 @@ const NotificationScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      {/* TOP BAR */}
-         <TopBar/>
 
       {/* MARK ALL READ BUTTON */}
       {unreadCount > 0 && (

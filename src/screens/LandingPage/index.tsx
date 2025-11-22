@@ -9,8 +9,6 @@ import {
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import TopBar from '@/components/Topbar';
-
 import products from '@/mocks/products.json';
 import { addToCart } from '@/redux/slices/cartSlice';
 
@@ -53,8 +51,6 @@ const LandingScreen: React.FC<LandingScreenProps> = ({
 
   return (
     <View style={styles.mainContainer}>
-
-     <TopBar/>
 
       {/* Product Grid */}
       <FlatList

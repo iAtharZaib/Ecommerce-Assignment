@@ -2,6 +2,7 @@ import '../../../firebase'; // Initialize Firebase
 
 import auth from '@react-native-firebase/auth';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   ActivityIndicator,
   Alert,
@@ -12,19 +13,20 @@ import {
   View,
 } from 'react-native';
 
-import { Paths } from '@/navigation/paths';
-import { RootScreenProps } from '@/navigation/types';
 
 // validation regex helpers (commented out until used)
 // import { emailRegex, passwordRegex } from '@/helpers';
 import styles from '@/shared/formstyles';
+import { useNavigation } from '@react-navigation/native';
+import { Paths } from '@/navigation/paths';
 
-function LoginScreen({ navigation }: RootScreenProps<Paths.Login>) {
+const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const navigation = useNavigation();
+  const { t } = useTranslation();
   const handleLogin = async () => {
   
     // if (!email || !password) {
@@ -46,18 +48,18 @@ function LoginScreen({ navigation }: RootScreenProps<Paths.Login>) {
       setLoading(true);
       const userCredential = await auth().signInWithEmailAndPassword(email, password);
       setLoading(false);
-      Alert.alert('Success', `Welcome ${userCredential.user.email}`);
+      Alert.alert(t('login_screen.success'), `${t('login_screen.welcome')} ${userCredential.user.email}`);
       // TODO: Navigate to your home screen
     } catch (error: any) {
       setLoading(false);
-      Alert.alert('Login Failed', error.message);
+      Alert.alert(t('login_screen.login_failed'), String(error?.message ?? ''));
     }
   };
 
   return (
     <View style={styles.container}>
       <Text style={[styles.title, { textAlign: I18nManager.isRTL ? 'right' : 'left' }]}>
-        Login
+        {t('login_screen.login')}
       </Text>
 
       {/* Email Input */}
@@ -65,7 +67,7 @@ function LoginScreen({ navigation }: RootScreenProps<Paths.Login>) {
         autoCapitalize="none"
         keyboardType="email-address"
         onChangeText={setEmail}
-        placeholder="Enter your Email"
+        placeholder={t('login_screen.enter_email')}
         style={[styles.input, { textAlign: I18nManager.isRTL ? 'right' : 'left' }]}
         value={email}
       />
@@ -74,7 +76,7 @@ function LoginScreen({ navigation }: RootScreenProps<Paths.Login>) {
       <View style={styles.passwordWrapper}>
         <TextInput
           onChangeText={setPassword}
-          placeholder="Password (7 characters)"
+          placeholder={t('login_screen.password_7_chars')}
           secureTextEntry={!showPassword}
           style={[styles.passwordInput, { textAlign: I18nManager.isRTL ? 'right' : 'left' }]}
           value={password}
@@ -96,8 +98,16 @@ function LoginScreen({ navigation }: RootScreenProps<Paths.Login>) {
         {loading ? (
           <ActivityIndicator color="#fff" />
         ) : (
-          <Text style={styles.buttonText}>Login</Text>
+          <Text style={styles.buttonText}>{t('login_screen.login')}</Text>
         )}
+      </TouchableOpacity>
+
+       <TouchableOpacity
+        disabled={loading}
+        onPress={() => navigation.navigate(Paths.Signup)}
+        style={styles.button}
+      >
+         <Text style={styles.buttonText}>{t('login_screen.dont_have_account')} · {t('signup_screen.signup')}</Text>
       </TouchableOpacity>
     </View>
   );

@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  I18nManager,
   Text,
   TouchableOpacity,
   View,
@@ -13,11 +12,9 @@ import { getUser, logoutUser } from '@/redux/slices/userSlice';
 
 import styles from './styles';
 import { useI18n } from '@/hooks/language/useI18n';
-import TopBar from '@/components/Topbar';
 
 const SettingsScreen: React.FC = () => {
   const dispatch = useDispatch();
-  const isRTL = I18nManager.isRTL;
   const { t } = useTranslation();
   const { toggleLanguage } = useI18n();
 
@@ -30,8 +27,6 @@ const SettingsScreen: React.FC = () => {
 
   return (
     <View style={styles.mainContainer}>
-      {/* TOP BAR */}
-    <TopBar/>
       {/* SETTINGS CONTENT */}
       <View style={{ alignItems: 'center', flex: 1, justifyContent: 'center', padding: 16 }}>
         <Text style={{ fontSize: 18, fontWeight: '600', marginBottom: 8 }}>

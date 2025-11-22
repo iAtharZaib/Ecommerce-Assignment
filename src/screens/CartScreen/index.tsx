@@ -10,7 +10,6 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import TopBar from '@/components/Topbar';
 import {
   getCartItems,
   getTotalAmount,
@@ -19,7 +18,6 @@ import {
   CartItem,
   decrementFromCart
 } from '@/redux/slices/cartSlice';
-import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 
 
@@ -65,9 +63,6 @@ const CartScreen: React.FC = () => {
 
   return (
     <View style={styles.mainContainer}>
-
-      <TopBar />
-
       <FlatList
         data={cartItems}
         keyExtractor={(item) => item.id.toString()}

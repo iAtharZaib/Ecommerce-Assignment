@@ -1,15 +1,5 @@
 {
   "ecomapp": {
-    "common_appName": {
-      "full": "React Native EcomApp",
-      "initials": "RNB"
-    },
-    "common_error": "Oops! Something went wrong.",
-    "screen_example": {
-      "hello_user": "Hi, my name is {{name}}",
-      "title": "Welcome on The $t(common_appName.full)",
-      "description": "Do you want to discover some features? Just click on one of the three buttons at the bottom of the screen. The first allows you to call a REST API. The second lets you change the theme color. And the third allows you to change the language."
-    },
     "error_boundary": {
       "title": "Oops! Something went wrong.",
       "description": "We are sorry for the inconvenience. Please try again later.",
@@ -44,11 +34,13 @@
       "password_7_chars": "Password (7 characters)",
       "success": "Success",
       "welcome": "Welcome",
-      "login_failed": "Login Failed"
+      "login_failed": "Login Failed",
+      "dont_have_account": "Don't have an account? "
     },
     "signup_screen": {
       "signup": "Signup",
       "username": "Username",
+      "already_have_account": "Already have an account? ",
       "at_least_5_chars": "Username must be at least 5 characters long",
       "invalid_email": "Please enter a valid email address",
       "password_at_least_7": "Password must be at least 7 characters long",
