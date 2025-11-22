@@ -7,6 +7,7 @@ import {
     View,
 } from 'react-native';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import TopBar from '@/components/Topbar';
 
@@ -32,7 +33,8 @@ const LandingScreen: React.FC<LandingScreenProps> = ({
   userEmail = '',
   userName = '',
 }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const renderProduct = ({ item }: { item: Product }) => (
     <View style={styles.card}>
@@ -42,8 +44,8 @@ const LandingScreen: React.FC<LandingScreenProps> = ({
           {item.title}
         </Text>
         <Text style={styles.productPrice}>${item.price.toFixed(2)}</Text>
-        <TouchableOpacity style={styles.addButton} onPress={() => dispatch(addToCart(item))}>
-          <Text style={styles.addButtonText}>Add to Cart</Text>
+        <TouchableOpacity style={styles.addButton} onPress={() => dispatch(addToCart({ ...item, quantity: 1 }))}>
+          <Text style={styles.addButtonText}>{t('landing_page.add_to_cart')}</Text>
         </TouchableOpacity>
       </View>
     </View>

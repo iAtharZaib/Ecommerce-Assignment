@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import {
   getNotifications,
@@ -22,6 +23,7 @@ import TopBar from '@/components/Topbar';
 const NotificationScreen: React.FC = () => {
   const dispatch = useDispatch();
   const isRTL = I18nManager.isRTL;
+  const { t } = useTranslation();
 
   const notifications = useSelector(getNotifications);
 
@@ -72,7 +74,7 @@ const NotificationScreen: React.FC = () => {
           }}
         >
           <Text style={{ color: '#fff', fontWeight: '600' }}>
-            {isRTL ? 'اجعل الكل مقروء' : 'Mark All Read'}
+            {t('notification_screen.mark_all_read')}
           </Text>
         </TouchableOpacity>
       )}

@@ -14,6 +14,46 @@
       "title": "Oops! Something went wrong.",
       "description": "We are sorry for the inconvenience. Please try again later.",
       "cta": "Reload the screen"
+    },
+    "landing_page": {
+      "add_to_cart": "Add to Cart"
+    },
+    "cart_screen": {
+      "your_cart_is_empty": "Your cart is empty",
+      "total": "Total",
+      "clear_cart": "Clear Cart",
+      "confirm_clear": "Confirm",
+      "clear_cart_message": "Are you sure you want to clear the cart?",
+      "cancel": "Cancel",
+      "yes": "Yes"
+    },
+    "notification_screen": {
+      "mark_all_read": "Mark All Read"
+    },
+    "settings_screen": {
+      "name": "Name",
+      "email": "Email",
+      "user_name": "User Name",
+      "user_email": "user@example.com",
+      "change_language": "Change Language",
+      "logout": "Logout"
+    },
+    "login_screen": {
+      "login": "Login",
+      "enter_email": "Enter your Email",
+      "password_7_chars": "Password (7 characters)",
+      "success": "Success",
+      "welcome": "Welcome",
+      "login_failed": "Login Failed"
+    },
+    "signup_screen": {
+      "signup": "Signup",
+      "username": "Username",
+      "at_least_5_chars": "Username must be at least 5 characters long",
+      "invalid_email": "Please enter a valid email address",
+      "password_at_least_7": "Password must be at least 7 characters long",
+      "enter_details": "Please enter your details",
+      "error": "Error"
     }
   }
 }

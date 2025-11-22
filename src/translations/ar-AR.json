@@ -14,6 +14,46 @@
       "title": "⁧عذراً! حدث خطأ ما.⁩",
       "description": "⁧نأسف للإزعاج. يرجى المحاولة مرة أخرى لاحقاً.⁩",
       "cta": "⁧إعادة تحميل الشاشة⁩"
+    },
+    "landing_page": {
+      "add_to_cart": "⁧إضافة إلى السلة⁩"
+    },
+    "cart_screen": {
+      "your_cart_is_empty": "⁧سلتك فارغة⁩",
+      "total": "⁧الإجمالي⁩",
+      "clear_cart": "⁧مسح السلة⁩",
+      "confirm_clear": "⁧تأكيد⁩",
+      "clear_cart_message": "⁧هل أنت متأكد من رغبتك في مسح السلة؟⁩",
+      "cancel": "⁧إلغاء⁩",
+      "yes": "⁧نعم⁩"
+    },
+    "notification_screen": {
+      "mark_all_read": "⁧اجعل الكل مقروء⁩"
+    },
+    "settings_screen": {
+      "name": "⁧الاسم⁩",
+      "email": "⁧البريد الإلكتروني⁩",
+      "user_name": "⁧اسم المستخدم⁩",
+      "user_email": "⁧user@example.com⁩",
+      "change_language": "⁧تغيير اللغة⁩",
+      "logout": "⁧تسجيل الخروج⁩"
+    },
+    "login_screen": {
+      "login": "⁧تسجيل الدخول⁩",
+      "enter_email": "⁧أدخل بريدك الإلكتروني⁩",
+      "password_7_chars": "⁧كلمة المرور (7 أحرف)⁩",
+      "success": "⁧نجاح⁩",
+      "welcome": "⁧مرحباً⁩",
+      "login_failed": "⁧فشل تسجيل الدخول⁩"
+    },
+    "signup_screen": {
+      "signup": "⁧إنشاء حساب⁩",
+      "username": "⁧اسم المستخدم⁩",
+      "at_least_5_chars": "⁧يجب أن يكون اسم المستخدم 5 أحرف على الأقل⁩",
+      "invalid_email": "⁧يرجى إدخال عنوان بريد إلكتروني صحيح⁩",
+      "password_at_least_7": "⁧يجب أن تكون كلمة المرور 7 أحرف على الأقل⁩",
+      "enter_details": "⁧يرجى إدخال تفاصيلك⁩",
+      "error": "⁧خطأ⁩"
     }
   }
 }

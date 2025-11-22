@@ -6,6 +6,7 @@ import {
   View,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import { clearCart } from '@/redux/slices/cartSlice';
 import { getUser, logoutUser } from '@/redux/slices/userSlice';
@@ -17,7 +18,8 @@ import TopBar from '@/components/Topbar';
 const SettingsScreen: React.FC = () => {
   const dispatch = useDispatch();
   const isRTL = I18nManager.isRTL;
-const { toggleLanguage } = useI18n();
+  const { t } = useTranslation();
+  const { toggleLanguage } = useI18n();
 
   const user = useSelector(getUser);
 
@@ -33,10 +35,10 @@ const { toggleLanguage } = useI18n();
       {/* SETTINGS CONTENT */}
       <View style={{ alignItems: 'center', flex: 1, justifyContent: 'center', padding: 16 }}>
         <Text style={{ fontSize: 18, fontWeight: '600', marginBottom: 8 }}>
-          {isRTL ? 'الاسم' : 'Name'}: {"user.name "|| 'User Name'}
+          {t('settings_screen.name')}: {user?.name || t('settings_screen.user_name')}
         </Text>
         <Text style={{ fontSize: 16, marginBottom: 20 }}>
-          {isRTL ? 'البريد الإلكتروني' : 'Email'}: {"user.email" || 'user@example.com'}
+          {t('settings_screen.email')}: {user?.email || t('settings_screen.user_email')}
         </Text>
 
         <TouchableOpacity
@@ -49,7 +51,7 @@ const { toggleLanguage } = useI18n();
           }}
         >
           <Text style={{ color: '#fff', fontSize: 16, fontWeight: 'bold' }}>
-            {isRTL ? 'تسجيل الخروج' : 'Change Language'}
+            {t('settings_screen.change_language')}
           </Text>
         </TouchableOpacity>
 
@@ -63,7 +65,7 @@ const { toggleLanguage } = useI18n();
           }}
         >
           <Text style={{ color: '#fff', fontSize: 16, fontWeight: 'bold' }}>
-            {isRTL ? 'تسجيل الخروج' : 'Logout'}
+            {t('settings_screen.logout')}
           </Text>
         </TouchableOpacity>
       </View>

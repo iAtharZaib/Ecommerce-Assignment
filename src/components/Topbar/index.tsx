@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, I18nManager } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useSelector } from 'react-redux';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import styles from './styles';
 import { getCartItems } from '@/redux/slices/cartSlice';
 import { getUnreadCount } from '@/redux/slices/notificationSlice';
@@ -10,9 +11,9 @@ import { getUser } from '@/redux/slices/userSlice';
 import { Paths } from '@/navigation/paths';
 
 const TopBar: React.FC = () => {
-  const isRTL = I18nManager.isRTL;
   const navigation = useNavigation();
   const route = useRoute();
+  const { t } = useTranslation();
   const homePage = route.name === Paths.LandingPage;
 
   const cartCount = useSelector(getCartItems).length;
@@ -20,10 +21,10 @@ const TopBar: React.FC = () => {
   const user = useSelector(getUser);
 
   const routeDisplayName: Record<string, string> = {
-    [Paths.LandingPage]: 'Home',
-    [Paths.Cart]: 'Cart',
-    [Paths.Notification]: 'Notifications',
-    [Paths.Settings]: 'Settings',
+    [Paths.LandingPage]: t('landing_page.add_to_cart'),
+    [Paths.Cart]: t('cart_screen.clear_cart'),
+    [Paths.Notification]: t('notification_screen.mark_all_read'),
+    [Paths.Settings]: t('settings_screen.logout'),
   };
 
   return (
