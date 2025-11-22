@@ -45,16 +45,67 @@ export default StyleSheet.create({
   // Content
   contentContainer: {
     flex: 1,
-    padding: 16,
+    padding: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
 
+  profileCard: {
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    padding: 24,
+    marginBottom: 32,
+    marginHorizontal: '5%',
+    width: '90%',
+    alignSelf: 'center',
+  },
+
+  fieldRow: {
+    marginBottom: 20,
+    paddingBottom: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f0f0f0',
+    flexDirection: isRTL ? 'row-reverse' : 'row',
+  },
+
+  fieldRowLast: {
+    marginBottom: 0,
+    paddingBottom: 0,
+    borderBottomWidth: 0,
+    flexDirection: isRTL ? 'row-reverse' : 'row',
+  },
+
+  fieldLabel: {
+    fontSize: 15,
+    marginHorizontal:3,
+    fontWeight: '700',
+    color: '#888',
+    textTransform: 'uppercase',
+    textAlign: isRTL ? 'right' : 'left',
+    writingDirection: isRTL ? 'rtl' : 'ltr',
+  },
+
+  fieldValue: {
+    fontSize: 15,
+    fontWeight: '500',
+    color: '#1f2937',
+    textAlign: isRTL ? 'right' : 'left',
+    writingDirection: isRTL ? 'rtl' : 'ltr',
+  },
+
+  buttonContainer: {
+    width: '90%',
+    gap: 12,
+    alignSelf: 'center',
+    flexDirection: 'column',
+  },
+
   logoutButton: {
-    backgroundColor: '#4F46E5',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 12,
+    backgroundColor: '#DC2626',
+    paddingVertical: 14,
+    paddingHorizontal: 24,
+    borderRadius: 500,
+    alignItems: 'center',
   },
 
   logoutButtonText: {

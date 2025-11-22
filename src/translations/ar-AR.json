@@ -22,14 +22,15 @@
       "mark_all_read": "⁧اجعل الكل مقروء⁩"
     },
     "settings_screen": {
-      "name": "⁧الاسم⁩",
-      "email": "⁧البريد الإلكتروني⁩",
-      "user_name": "⁧اسم المستخدم⁩",
+      "name": "⁧الاسم:  ⁩",
+      "email": "⁧البريد الإلكتروني:  ⁩",
+      "user_name": "⁧اسم المستخدم:  ⁩",
       "user_email": "⁧user@example.com⁩",
       "change_language": "⁧تغيير اللغة⁩",
       "logout": "⁧تسجيل الخروج⁩",
       "settings_success": "نجاح",
-      "settings_logout_successful": "تم تسجيل الخروج بنجاح"
+      "settings_logout_successful": "تم تسجيل الخروج بنجاح",
+      "settings_created_at": "تم إنشاء الحساب في"
     },
     "login_screen": {
       "login": "⁧تسجيل الدخول⁩",

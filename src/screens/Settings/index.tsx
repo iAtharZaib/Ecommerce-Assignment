@@ -31,32 +31,35 @@ const SettingsScreen: React.FC = () => {
 
   return (
     <View style={styles.mainContainer}>
-      {/* SETTINGS CONTENT */}
-      <View style={{ alignItems: 'center', flex: 1, justifyContent: 'center', padding: 16 }}>
-        <Text style={{ fontSize: 18, fontWeight: '600', marginBottom: 8 }}>
-          {t('settings_screen.name')}: {user?.name || t('settings_screen.user_name')}
-        </Text>
-        <Text style={{ fontSize: 16, marginBottom: 20 }}>
-          {t('settings_screen.email')}: {user?.email || t('settings_screen.user_email')}
-        </Text>
+      <View style={styles.contentContainer}>
+        <View style={styles.profileCard}>
+          <View style={styles.fieldRow}>
+            <Text style={styles.fieldLabel}>{t('settings_screen.name')}</Text>
+            <Text style={styles.fieldValue}>{user?.name || t('settings_screen.user_name')}</Text>
+          </View>
 
-        <TouchableOpacity onPress={toggleLanguage} style={sharedStyles.languageButton}>
-          <Text style={sharedStyles.languageButtonText}>{t('settings_screen.change_language')}</Text>
-        </TouchableOpacity>
+          <View style={styles.fieldRow}>
+            <Text style={styles.fieldLabel}>{t('settings_screen.email')}</Text>
+            <Text style={styles.fieldValue}>{user?.email || t('settings_screen.user_email')}</Text>
+          </View>
 
-        <TouchableOpacity
-          onPress={handleLogout}
-          style={{
-            backgroundColor: '#4F46E5',
-            borderRadius: 12,
-            paddingHorizontal: 32,
-            paddingVertical: 12,
-          }}
-        >
-          <Text style={{ color: '#fff', fontSize: 16, fontWeight: 'bold' }}>
-            {t('settings_screen.logout')}
-          </Text>
-        </TouchableOpacity>
+          <View style={styles.fieldRowLast}>
+            <Text style={styles.fieldLabel}>{t('settings_screen.settings_created_at')}</Text>
+            <Text style={styles.fieldValue}>
+              {user?.createdAt ? new Date(user.createdAt).toLocaleString() : ''}
+            </Text>
+          </View>
+        </View>
+
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity onPress={toggleLanguage} style={sharedStyles.languageButton}>
+            <Text style={sharedStyles.languageButtonText}>{t('settings_screen.change_language')}</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
+            <Text style={styles.logoutButtonText}>{t('settings_screen.logout')}</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

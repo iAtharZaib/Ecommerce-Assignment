@@ -22,14 +22,15 @@
       "mark_all_read": "Mark All Read"
     },
     "settings_screen": {
-      "name": "Name",
-      "email": "Email",
-      "user_name": "User Name",
+      "name": "Name:  ",
+      "email": "Email:  ",
+      "user_name": "User Name:  ",
       "user_email": "user@example.com",
       "change_language": "Change Language",
       "logout": "Logout",
       "settings_success": "Success",
-      "settings_logout_successful": "Logout successful"
+      "settings_logout_successful": "Logout successful",
+      "settings_created_at": "Account created at"
     },
     "login_screen": {
       "login": "Login",
@@ -62,6 +63,7 @@
       "password_at_least_7": "Password must be at least 7 characters long",
       "enter_details": "Please enter your details",
       "error": "Error",
+      "signup_failed": "Signup Failed",
       "signup_successful": "Success",
       "sign_up_successfully": "Signup successful"
     }

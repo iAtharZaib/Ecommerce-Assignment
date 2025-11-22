@@ -33,10 +33,6 @@ export default StyleSheet.create({
     gap: 16,
   },
 
-  iconWrapper: {
-    padding: 5,
-  },
-
   badge: {
     position: "absolute",
     top: -2,
@@ -70,11 +66,6 @@ export default StyleSheet.create({
     padding: 12,
     borderRadius: 12,
     marginBottom: 12,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
     position: "relative",
   },
 
@@ -119,7 +110,6 @@ export default StyleSheet.create({
     left: isRTL ? 8 : undefined,
   },
 
-  // Mark All Read Button
   markReadButton: {
     backgroundColor: "#fff",
     paddingVertical: 6,

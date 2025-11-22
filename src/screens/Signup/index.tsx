@@ -6,6 +6,7 @@ import { useI18n } from '@/hooks/language/useI18n';
 import { useTranslation } from 'react-i18next';
 import { Paths } from '@/navigation/paths';
 import auth from '@react-native-firebase/auth'
+import firestore from '@react-native-firebase/firestore'
 import { useDispatch } from 'react-redux';
 import { setUser } from '@/redux/slices/userSlice';
 import { emailRegex, passwordRegex, usernameRegex } from '@/shared/helpers';
@@ -41,34 +42,52 @@ const SignupScreen: React.FC = () => {
     return;
     }
         
-    auth().createUserWithEmailAndPassword(email, password)
-    .then((response) => {
-        dispatch(setUser({
-            name: username,
-            email:email,
-            uid: response.user.uid 
-        }))
-        Alert.alert(t('signup_screen.signup_successful'), t('signup_screen.sign_up_successfully'));
-    })
-    .catch(error => {
-    if (error.code === 'auth/email-already-in-use') {
-        Alert.alert(t('signup_screen.signup_failed'), t('signup_screen.email_in_use'));
-    return;
+    try {
+      const response = await auth().createUserWithEmailAndPassword(email, password);
+      const uid = response.user.uid;
+      const createdAt = response.user.metadata.creationTime;
+      try {
+        await response.user.updateProfile({ displayName: username });
+      } catch (e) {
+        console.warn('updateProfile failed', e);
+      }
+      await firestore().collection('users').doc(uid).set({
+        uid,
+        name: username,
+        email,
+        createdAt: Date.now(),
+      });
+
+      dispatch(
+        setUser({
+          name: username,
+          email,
+          uid,
+          createdAt
+        }),
+      );
+
+      Alert.alert(t('signup_screen.signup_successful'), t('signup_screen.sign_up_successfully'));
+    } catch (error: any) {
+      if (error.code === 'auth/email-already-in-use') {
+        Alert.alert(t('signup_screen.signup_failed'), t('login_screen.email_in_use'));
+        return;
+      }
+      if (error.code === 'auth/invalid-email') {
+        Alert.alert(t('signup_screen.signup_failed'), t('login_screen.email_invalid'));
+        return;
+      }
+      if (error.code === 'auth/weak-password') {
+        Alert.alert(t('signup_screen.signup_failed'), t('login_screen.weak_password'));
+        return;
+      }
+      if (error.code === 'auth/operation-not-allowed') {
+        Alert.alert(t('signup_screen.signup_failed'), t('login_screen.operation_not_allowed'));
+        return;
+      }
+      console.error(error);
+      Alert.alert(t('signup_screen.signup_failed'), String(error?.message ?? ''));
     }
-    if (error.code === 'auth/invalid-email') {
-        Alert.alert(t('signup_screen.signup_failed'), t('signup_screen.email_invalid'));
-    return;
-    }
-    if (error.code === 'auth/weak-password') {
-        Alert.alert(t('signup_screen.signup_failed'), t('signup_screen.weak_password'));
-    return;
-    }   
-    if (error.code === 'auth/operation-not-allowed') {
-        Alert.alert(t('signup_screen.signup_failed'), t('signup_screen.operation_not_allowed'));
-    return;
-    }
-    console.error(error);
-    });
     };
 
   return (

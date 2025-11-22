@@ -80,7 +80,7 @@ const TopBar: React.FC = () => {
         </Text>
           <TouchableOpacity
             style={styles.backButtonRight}
-            onPress={() => navigation.navigate(Paths.LandingPage)}
+            onPress={() => navigation.replace(Paths.LandingPage)}
           >
             <Text style={styles.backText}>Back to Home</Text>
           </TouchableOpacity>

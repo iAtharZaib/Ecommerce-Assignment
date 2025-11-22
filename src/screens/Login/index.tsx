@@ -12,12 +12,13 @@ import {
   View,
 } from 'react-native';
 import auth from '@react-native-firebase/auth'
+import firestore from '@react-native-firebase/firestore'
 import styles from '@/shared/formstyles';
 import { useNavigation } from '@react-navigation/native';
 import { Paths } from '@/navigation/paths';
 import { emailRegex, passwordRegex } from '@/shared/helpers';
 import { useDispatch } from 'react-redux';
-import { setUser } from '@/redux/slices/userSlice';
+import { setUser, UserInfo } from '@/redux/slices/userSlice';
 
 const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -41,17 +42,38 @@ const LoginScreen: React.FC = () => {
       Alert.alert(t('login_screen.error'), t('login_screen.password_too_short'));
       return;
     }
-    
-  auth().signInWithEmailAndPassword(email, password)
-  .then((response) => {
-     dispatch(setUser({
-            name: response.user.displayName,
-            email:response.user.email,
-            uid: response.user.uid 
-        }))
+  try {
+    const response = await auth().signInWithEmailAndPassword(email, password);
+    const uid = response.user.uid;
+    const fallbackcreatedAt = Date.now();
+    try {
+      const doc = await firestore().collection('users').doc(uid).get();
+      if (doc.exists) {
+        const data = doc.data() as UserInfo | undefined;
+        dispatch(
+          setUser({
+            uid,
+            name: data?.name ?? response.user.displayName ?? '',
+            email: data?.email ?? response.user.email ?? '',
+            createdAt: fallbackcreatedAt ?? response.user.metadata.creationTime ?? 0,
+          }),
+        );
+      } else {
+        dispatch(
+          setUser({
+            uid,
+            name: response.user.displayName ?? '',
+            email: response.user.email ?? '',
+            createdAt: response.user.metadata.creationTime ?? 0 ,
+          }),
+        );
+      }
+    } catch (e) {
+      console.warn('Failed to fetch user profile from firestore', e);
+    }
+
     Alert.alert(t('login_screen.login-success'), t('login_screen.logged_in_successfully'));
-  })
-  .catch(error => {
+  } catch (error: any) {
     if (error.code === 'auth/email-already-in-use') {
       Alert.alert(t('login_screen.login_failed'), t('login_screen.email_in_use'));
     }
@@ -69,7 +91,8 @@ const LoginScreen: React.FC = () => {
     }
 
     console.error(error);
-  });
+    Alert.alert(t('login_screen.login_failed'), String(error?.message ?? ''));
+  }
   };
 
   return (

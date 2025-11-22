@@ -1,10 +1,11 @@
 // src/redux/slices/userSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type UserInfo = {
-  email?: string;
-  name?: string;
+export type UserInfo = {
+  email: string;
+  name: string;
   uid: string;
+  createdAt: number;
 }
 
 type UserState = {
@@ -15,9 +16,10 @@ type UserState = {
 const initialState: UserState = {
   isLoggedIn: true,
   user: {
-    email:"john.doe@example.com",
-    name:"John Doe",
-    uid:"123_123"
+    email:"",
+    name:"",
+    uid:"",
+    createdAt: 0
   },
 };
 

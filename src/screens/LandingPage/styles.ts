@@ -42,10 +42,6 @@ export default StyleSheet.create({
         borderRadius: 16,
         elevation: 3,
         overflow: 'hidden',
-        shadowColor: '#000',
-        shadowOffset: { height: 2, width: 0 },
-        shadowOpacity: 0.15,
-        shadowRadius: 4,
         width: CARD_WIDTH,
     },
 
