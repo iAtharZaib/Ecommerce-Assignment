@@ -1,4 +1,3 @@
-// src/redux/slices/cartSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type CartItem = {
@@ -25,7 +24,7 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action: PayloadAction<CartItem>) => {
       const item = action.payload;
-      const existing = state.items.find((index) => index.id === item.id);
+      const existing = state.items.find(i => i.id === item.id);
 
       if (existing) {
         existing.quantity += 1;
@@ -36,24 +35,30 @@ const cartSlice = createSlice({
       state.totalAmount += item.price;
     },
 
+    decrementFromCart: (state, action: PayloadAction<number>) => {
+      const id = action.payload;
+      const existing = state.items.find(i => i.id === id);
+
+      if (existing) {
+        if (existing.quantity > 1) {
+          existing.quantity -= 1;
+          state.totalAmount -= existing.price;
+        } else {
+          // Remove completely if quantity is 1
+          state.totalAmount -= existing.price;
+          state.items = state.items.filter(i => i.id !== id);
+        }
+      }
+    },
+
     clearCart: (state) => {
       state.items = [];
       state.totalAmount = 0;
     },
-
-    removeFromCart: (state, action: PayloadAction<number>) => {
-      const id = action.payload;
-      const item = state.items.find((index) => index.id === id);
-
-      if (item) {
-        state.totalAmount -= item.price * item.quantity;
-        state.items = state.items.filter((index) => index.id !== id);
-      }
-    },
   },
 });
 
-export const { addToCart, clearCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, clearCart, decrementFromCart } = cartSlice.actions;
 export default cartSlice.reducer;
 
 export const getCartItems = (state: { cart: CartState }) => state.cart.items;

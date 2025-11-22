@@ -1,12 +1,12 @@
 // src/redux/slices/notificationSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export interface NotificationItem {
-  id: string;
-  type: "success" | "error" | "info";
-  message: string;
+export type NotificationItem = {
+  date: string;
+  description: string;
+  id: number;
   read: boolean;
-  createdAt: number;
+  title:string;
 }
 
 type NotificationState = {
@@ -15,30 +15,40 @@ type NotificationState = {
 
 const initialState: NotificationState = {
   list: [{
-  createdAt: 1_732_023_201_291,
-  id: "17320232012",
-  message: "Item added to cart",
-  read: false,
-  type: "success"
-},{
-  createdAt: 1_732_023_201_291,
-  id: "17320232013",
-  message: "Item added to cart",
-  read: true,
-  type: "success"
-},{
-  createdAt: 1_732_023_201_291,
-  id: "17320232014",
-  message: "Item added to cart",
-  read: false,
-  type: "success"
-},{
-  createdAt: 1_732_023_201_291,
-  id: "17320232015",
-  message: "Item added to cart",
-  read: false,
-  type: "success"
-}],
+    date: "2025-11-22 10:30 AM",
+    description: "Your order has been shipped.",
+    id: 1,
+    read: false,
+    title: "Essence Mascara Lash Princess",
+  },
+  {
+    date: "2025-11-21 09:15 AM",
+    description: "Your item is out for delivery.",
+    id: 2,
+    read: true,
+    title: "Eyeshadow Palette with Mirror",
+  },
+  {
+    date: "2025-11-20 05:20 PM",
+    description: "Order placed successfully.",
+    id: 3,
+    read: false,
+    title: "Powder Canister",
+  },
+  {
+    date: "2025-11-19 01:00 PM",
+    description: "Delivered to your address.",
+    id: 4,
+    read: false,
+    title: "Red Lipstick",
+  },
+  {
+    date: "2025-11-18 11:45 AM",
+    description: "Your refund has been processed.",
+    id: 5,
+    read: false,
+    title: "Red Nail Polish",
+  },],
 };
 
 const notificationSlice = createSlice({
@@ -47,7 +57,7 @@ const notificationSlice = createSlice({
   reducers: {
     addNotification: (
       state,
-      action: PayloadAction<Omit<NotificationItem, "id" | "read" | "createdAt">>
+      action: PayloadAction<Omit<NotificationItem, "createdAt" | "id" | "read">>
     ) => {
       state.list.unshift({
         id: Date.now().toString(),

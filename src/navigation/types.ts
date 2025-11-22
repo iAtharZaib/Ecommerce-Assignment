@@ -11,4 +11,7 @@ export type RootStackParamList = {
   [Paths.Login]: undefined;
   [Paths.Signup]: undefined;
   [Paths.Startup]: undefined;
+  [Paths.Notification]: undefined;
+  [Paths.Settings]: undefined;
+  [Paths.Cart]: undefined;
 };

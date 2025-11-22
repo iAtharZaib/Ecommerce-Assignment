@@ -10,7 +10,10 @@ import { useTheme } from '@/theme';
 
 import { Example, Login, Startup } from '@/screens';
 import LandingPage from '@/screens/LandingPage';
+import NotificationScreen from '@/screens/NotificationPage';
+import SettingsScreen from '@/screens/Settings';
 import Signup from '@/screens/Signup';
+import CartScreen from '@/screens/CartScreen';
 const isRTL = I18nManager.isRTL;
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -23,6 +26,9 @@ function ApplicationNavigator() {
       <NavigationContainer direction={isRTL ? 'rtl' : 'ltr'} theme={navigationTheme}>
         <Stack.Navigator key={variant} screenOptions={{ headerShown: false }}>
           <Stack.Screen component={LandingPage} name={Paths.LandingPage} />
+          <Stack.Screen component={SettingsScreen} name={Paths.Settings} />
+          <Stack.Screen component={NotificationScreen} name={Paths.Notification} />
+          <Stack.Screen component={CartScreen} name={Paths.Cart} />
           <Stack.Screen component={Login} name={Paths.Login} />
           <Stack.Screen component={Signup} name={Paths.Signup} />
           <Stack.Screen component={Startup} name={Paths.Startup} />

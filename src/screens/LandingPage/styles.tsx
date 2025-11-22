@@ -1,4 +1,4 @@
-import { Dimensions, I18nManager, StatusBar, StyleSheet } from 'react-native';
+import { Dimensions, I18nManager, StyleSheet } from 'react-native';
 
 const { width } = Dimensions.get('window');
 const CARD_WIDTH = width * 0.45;
@@ -96,15 +96,6 @@ export default StyleSheet.create({
         flexDirection: isRTL ? 'row-reverse' : 'row',
         justifyContent: 'space-between',
         marginBottom: 16,
-    },
-    topBar: {
-        alignItems: 'center',
-        backgroundColor: '#4F46E5',
-        flexDirection: isRTL ? 'row-reverse' : 'row',
-        justifyContent: 'space-between',
-        paddingHorizontal: 16,
-        paddingTop: StatusBar.currentHeight,
-        paddingVertical: 10,
     },
     userEmail: {
         color: '#fff',
