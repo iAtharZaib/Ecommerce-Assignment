@@ -6,7 +6,8 @@
     "cart_screen": {
       "cart_title": "Your Cart",
       "your_cart_is_empty": "Your cart is empty",
-      "total": "Total",
+      "total_amount": "Total amount",
+      "total_items": "Total items",
       "clear_cart": "Clear Cart",
       "confirm_clear": "Confirm",
       "clear_cart_message": "Are you sure you want to clear the cart?",

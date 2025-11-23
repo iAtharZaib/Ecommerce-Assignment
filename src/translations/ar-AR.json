@@ -6,7 +6,8 @@
     "cart_screen": {
       "cart_title": "سلتك",
       "your_cart_is_empty": "⁧سلتك فارغة⁩",
-      "total": "⁧الإجمالي⁩",
+      "total_amount": "المبلغ الإجمالي",
+      "total_items": "إجمالي العناصر",
       "clear_cart": "⁧مسح السلة⁩",
       "confirm_clear": "⁧تأكيد⁩",
       "clear_cart_message": "⁧هل أنت متأكد من رغبتك في مسح السلة؟⁩",

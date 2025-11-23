@@ -27,7 +27,7 @@ const CartScreen: React.FC = () => {
 
   const cartItems = useSelector(getCartItems);
   const totalAmount = useSelector(getTotalAmount);
-
+  const quantity = cartItems.reduce((total, item) => total + item.quantity, 0);
   const handleIncrement = (item: CartItem) => dispatch(addToCart(item));
   const handleDecrement = (item: CartItem) => {
   dispatch(decrementFromCart(item.id));
@@ -86,7 +86,10 @@ const CartScreen: React.FC = () => {
 
       {cartItems.length > 0 && (
         <View style={styles.cartFooter}>
-          <Text style={styles.totalText}>{t('cart_screen.total')}: ${totalAmount.toFixed(2)}</Text>
+            <View> 
+          <Text style={styles.totalText}>{t('cart_screen.total_items')}: {quantity}</Text>
+          <Text style={styles.totalText}>{t('cart_screen.total_amount')}: ${totalAmount.toFixed(2)}</Text>
+          </View>
           <TouchableOpacity style={styles.clearButton} onPress={handleClearCart}>
             <Text style={styles.clearText}>{t('cart_screen.clear_cart')}</Text>
           </TouchableOpacity>

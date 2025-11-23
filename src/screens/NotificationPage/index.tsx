@@ -66,7 +66,8 @@ const NotificationScreen: React.FC = () => {
           </Text>
         </TouchableOpacity>
       )}
-
+        <View style={styles.emptyView} />
+        
       <FlatList
         data={notifications}
         keyExtractor={item => item.id.toString()}

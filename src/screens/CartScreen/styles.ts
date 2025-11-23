@@ -15,9 +15,10 @@ export default StyleSheet.create({
   },
   itemImage: {
     width: CARD_WIDTH - 24,
-    height: 150,
+    height: 100,
     borderRadius: 12,
     marginBottom: 12,
+    resizeMode: 'center'
   },
 
   backText: {
@@ -28,6 +29,7 @@ export default StyleSheet.create({
     marginRight: I18nManager.isRTL ? 8 : 0,
   },
   cartFooter: {
+    marginVertical:16,
     alignItems: 'center',
     backgroundColor: '#fff',
     borderColor: '#ddd',
@@ -47,12 +49,13 @@ export default StyleSheet.create({
   clearButton: {
     backgroundColor: '#F87171',
     borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
+    paddingHorizontal: 20,
+    paddingVertical: 12,
   },
   clearText: {
     color: '#fff',
     fontWeight: 'bold',
+    fontSize:16
   },
   emptyContainer: {
     alignItems: 'center',
@@ -76,7 +79,7 @@ export default StyleSheet.create({
     textAlign: isRTL ? 'right' : 'left',
     width: CARD_WIDTH - 24,
   },
-  mainContainer: { backgroundColor: '#f7f7f7', flex: 1 },
+  mainContainer: { backgroundColor: '#f7f7f7', flex: 1, marginTop: 20 },
   qtyButton: {
     backgroundColor: '#4F46E5',
     borderRadius: 8,

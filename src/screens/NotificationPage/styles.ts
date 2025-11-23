@@ -68,6 +68,11 @@ export default StyleSheet.create({
      justifyContent: 'center', 
      alignItems: 'center'
      },
+
+     emptyView: {
+      height:20
+    },
+
 emptyContainer: {
     alignItems: 'center',
     flex: 1,
