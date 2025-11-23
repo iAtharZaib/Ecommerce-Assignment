@@ -23,7 +23,7 @@ const TopBar: React.FC = () => {
 
   const routeDisplayName: Record<string, string> = {
     [Paths.LandingPage]: t('landing_page.add_to_cart'),
-    [Paths.Cart]: t('cart_screen.clear_cart'),
+    [Paths.Cart]: t('cart_screen.cart_title'),
     [Paths.Notification]: t('notification_screen.notification'),
     [Paths.Settings]: t('settings_screen.logout'),
   };
@@ -79,7 +79,7 @@ const TopBar: React.FC = () => {
             style={styles.backButtonRight}
             onPress={() => navigation.replace(Paths.LandingPage)}
           >
-            <Text style={styles.backText}>Back to Home</Text>
+            <Text style={styles.backText}>{t('settings_screen.settings_back_to_home')}</Text>
           </TouchableOpacity>
           </View>
         )}

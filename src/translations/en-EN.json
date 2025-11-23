@@ -1,14 +1,10 @@
 {
   "ecomapp": {
-    "error_boundary": {
-      "title": "Oops! Something went wrong.",
-      "description": "We are sorry for the inconvenience. Please try again later.",
-      "cta": "Reload the screen"
-    },
     "landing_page": {
       "add_to_cart": "Add to Cart"
     },
     "cart_screen": {
+      "cart_title": "Your Cart",
       "your_cart_is_empty": "Your cart is empty",
       "total": "Total",
       "clear_cart": "Clear Cart",
@@ -23,15 +19,16 @@
       "no_notifications": "No notifications available"
     },
     "settings_screen": {
-      "name": "Name:  ",
-      "email": "Email:  ",
+      "name": "Name:",
+      "email": "Email:",
       "user_name": "User Name:  ",
       "user_email": "user@example.com",
       "change_language": "Change Language",
       "logout": "Logout",
       "settings_success": "Success",
       "settings_logout_successful": "Logout successful",
-      "settings_created_at": "Account created at"
+      "settings_created_at": "Account created at:",
+      "settings_back_to_home": "Back to Home"
     },
     "login_screen": {
       "login": "Login",

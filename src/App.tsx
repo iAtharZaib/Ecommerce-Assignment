@@ -14,7 +14,7 @@ import '@/translations';
 import { persistor, store } from './redux/store/store';
 
 import messaging from '@react-native-firebase/messaging';
-import { requestUserPermission, listenForNotifications } from '@/shared/notificationService';
+import { requestUserPermission, listenForNotifications, requestNotificationPermission } from '@/shared/notificationService';
 import notifee, { AndroidImportance } from '@notifee/react-native';
 import { addNotification } from './redux/slices/notificationSlice';
 
@@ -25,6 +25,7 @@ export const storage = new MMKV();
 
 function App() {
   useEffect(() => {
+    requestNotificationPermission();
     requestUserPermission();
     listenForNotifications();
 

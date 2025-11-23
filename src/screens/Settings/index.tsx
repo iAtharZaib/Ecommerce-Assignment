@@ -36,17 +36,18 @@ const SettingsScreen: React.FC = () => {
       <View style={styles.contentContainer}>
         <View style={styles.profileCard}>
           <View style={styles.fieldRow}>
+            <Text style={styles.fieldLabel}>{t('settings_screen.name')}</Text>
             <Text style={styles.fieldValue}>{user?.name || t('settings_screen.user_name')}</Text>
           </View>
 
           <View style={styles.fieldRow}>
+            <Text style={styles.fieldLabel}>{t('settings_screen.email')}</Text>
             <Text style={styles.fieldValue}>{user?.email || t('settings_screen.user_email')}</Text>
           </View>
 
           <View style={styles.fieldRowLast}>
-            <Text style={styles.fieldValue}>
-              {user?.createdAt ? new Date(user.createdAt).toLocaleString() : ''}
-            </Text>
+            <Text style={styles.fieldLabel}>{t('settings_screen.settings_created_at')}</Text>
+            <Text style={styles.fieldValue}>{user?.createdAt ? new Date(user.createdAt).toLocaleString() : ''}</Text>
           </View>
         </View>
 

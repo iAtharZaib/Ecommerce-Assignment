@@ -48,7 +48,6 @@ const LoginScreen: React.FC = () => {
     const nameFromResponse = response.user.displayName;
     const emailFromResponse = response.user.email;
     const creationTime = response.user.metadata.creationTime;
-    const fallbackcreatedAt = Date.now();
     try {
       const doc = await firestore().collection('users').doc(uid).get();
       if (doc.exists) {
@@ -58,7 +57,7 @@ const LoginScreen: React.FC = () => {
             uid,
             name: data?.name ?? nameFromResponse ?? '',
             email: data?.email ?? emailFromResponse ?? '',
-            createdAt: fallbackcreatedAt ?? creationTime ?? 0,
+            createdAt: data?.createdAt ?? creationTime ?? 0 ,
           }),
         );
       } else {

@@ -70,6 +70,14 @@ export default StyleSheet.create({
     paddingBottom: 0,
     borderBottomWidth: 0,
   },
+   fieldLabel: {
+    fontSize: 15,
+    marginHorizontal:3,
+    textAlign:'center',
+    fontWeight: '700',
+    textDecorationLine: 'underline',
+    textTransform: 'uppercase',
+  },
 
   fieldValue: {
     fontSize: 15,

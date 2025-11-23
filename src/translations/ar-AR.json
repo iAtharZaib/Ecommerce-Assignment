@@ -1,14 +1,10 @@
 {
   "ecomapp": {
-    "error_boundary": {
-      "title": "⁧عذراً! حدث خطأ ما.⁩",
-      "description": "⁧نأسف للإزعاج. يرجى المحاولة مرة أخرى لاحقاً.⁩",
-      "cta": "⁧إعادة تحميل الشاشة⁩"
-    },
     "landing_page": {
       "add_to_cart": "⁧إضافة إلى السلة⁩"
     },
     "cart_screen": {
+      "cart_title": "سلتك",
       "your_cart_is_empty": "⁧سلتك فارغة⁩",
       "total": "⁧الإجمالي⁩",
       "clear_cart": "⁧مسح السلة⁩",
@@ -23,15 +19,16 @@
       "no_notifications": "لا توجد إشعارات متاحة"
     },
     "settings_screen": {
-      "name": "⁧الاسم:  ⁩",
-      "email": "⁧البريد الإلكتروني:  ⁩",
+      "name": "⁧الاسم: ⁩",
+      "email": "⁧البريد الإلكتروني: ⁩",
       "user_name": "⁧اسم المستخدم:  ⁩",
       "user_email": "⁧user@example.com⁩",
       "change_language": "⁧تغيير اللغة⁩",
       "logout": "⁧تسجيل الخروج⁩",
       "settings_success": "نجاح",
       "settings_logout_successful": "تم تسجيل الخروج بنجاح",
-      "settings_created_at": "تم إنشاء الحساب في"
+      "settings_created_at": "تم إنشاء الحساب في:",
+      "settings_back_to_home": "العودة إلى الصفحة الرئيسية"
     },
     "login_screen": {
       "login": "⁧تسجيل الدخول⁩",

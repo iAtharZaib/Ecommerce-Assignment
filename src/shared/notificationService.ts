@@ -2,7 +2,19 @@ import messaging, { FirebaseMessagingTypes } from '@react-native-firebase/messag
 import notifee, { AndroidImportance } from '@notifee/react-native';
 import { store } from '@/redux/store/store';
 import { addNotification } from '@/redux/slices/notificationSlice';
+import { PermissionsAndroid, Platform } from 'react-native';
 
+export const requestNotificationPermission = async () => {
+  if (Platform.OS === 'android' && Platform.Version >= 33) {
+    try {
+      await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  }
+};
 export const requestUserPermission = async () => {
   const authStatus = await messaging().requestPermission();
   const enabled =
