@@ -25,6 +25,10 @@ Supports **RTL (Arabic)**, **theming**, **cart functionality**, **notifications*
 - MMKV Storage
 - Custom Theming
 
+## 📹 Video link
+
+https://github.com/user-attachments/assets/dee9871f-69df-4d5a-82e9-d13e33cf3e15
+
 ## 📦 Installation
 
 ### Clone Repo
