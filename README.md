@@ -9,7 +9,6 @@ Supports **RTL (Arabic)**, **theming**, **cart functionality**, **notifications*
 - 🛍️ Cart Screen with quantity update, total calculation & clear cart  
 - 🔔 Push Notifications (Android only) using FCM + Notifee  
 - ✉️ Notification Screen with Read/Unread status  
-- 🌙 Dark/Light Theme using custom ThemeProvider  
 - 🌍 Multilingual (English + Arabic) with RTL support  
 - 💾 Persisted Redux Store (cart, notifications, user, settings)  
 - 📦 Modular Clean Architecture
@@ -22,8 +21,6 @@ Supports **RTL (Arabic)**, **theming**, **cart functionality**, **notifications*
 - i18n (Arabic + English)
 - Firebase Messaging
 - Notifee
-- MMKV Storage
-- Custom Theming
 
 ## 📹 Video link
 
@@ -75,8 +72,6 @@ I18nManager.allowRTL(true);
 I18nManager.forceRTL(true);
 ```
 
-## 🎨 Theming
-Dynamic theme switching stored in MMKV.
 
 ## 🧑‍💻 Author
 **iAthar Zaib**  
